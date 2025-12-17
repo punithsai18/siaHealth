@@ -56,7 +56,7 @@ This application follows a **rule-based validation with AI enhancement** approac
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/punithsai18/sia.git
+git clone https://github.com/punithsai18/siaHealth.git
 cd sia
 ```
 
