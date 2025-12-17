@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIA Health - Visual Preview of All Pages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #0d0f0d;
+            color: #fff;
+            padding: 40px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #7ed321;
+        }
+        .intro {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+        .page-section {
+            margin-bottom: 60px;
+            background: #1a1f1a;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .page-title {
+            font-size: 28px;
+            color: #7ed321;
+            margin-bottom: 15px;
+        }
+        .page-description {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+        .feature-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #ddd;
+        }
+        .feature-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #7ed321;
+            font-weight: bold;
+        }
+        .screenshot-placeholder {
+            background: #232823;
+            border: 2px solid #2d3a2d;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            color: #7ed321;
+            font-size: 14px;
+        }
+        .mockup {
+            background: #151815;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .mockup-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .stat-card {
+            background: #232823;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #7ed321;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+        .client-card {
+            background: #232823;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 2px solid transparent;
+        }
+        .client-card.pending {
+            border-color: #ffa726;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .badge.active {
+            background: #7ed321;
+            color: #000;
+        }
+        .badge.pending {
+            background: #ffa726;
+            color: #000;
+        }
+        .notification-card {
+            background: #232823;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: flex;
+            gap: 15px;
+        }
+        .notification-card.unread {
+            background: #2d3a2d;
+            border: 1px solid rgba(126, 211, 33, 0.3);
+        }
+        .notification-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .rule-card {
+            background: #232823;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .rule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .rule-number {
+            width: 40px;
+            height: 40px;
+            background: rgba(126, 211, 33, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #7ed321;
+        }
+        .setting-card {
+            background: #232823;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 SIA Health - All Pages Implemented</h1>
+        <p class="intro">
+            The website is now fully usable with 6 complete pages. Below is a visual overview of each page with its features.
+        </p>
+
+        <!-- Dashboard Overview -->
+        <div class="page-section">
+            <h2 class="page-title">1. Dashboard (Overview)</h2>
+            <p class="page-description">Main landing page showing statistics and recent activity</p>
+            <ul class="feature-list">
+                <li>Statistics cards showing Total Clients (24), Pending Reviews (7), Approved Today (12), Quality Score (94%)</li>
+                <li>Recent Reviews section with client status updates</li>
+                <li>Quick stats for the week</li>
+                <li>Quick Actions shortcuts</li>
+            </ul>
+            <div class="mockup">
+                <div class="mockup-header">Statistics Overview</div>
+                <div class="grid">
+                    <div class="stat-card">
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Total Clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Pending Reviews</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Approved Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">94%</div>
+                        <div class="stat-label">Quality Score</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clients Page -->
+        <div class="page-section">
+            <h2 class="page-title">2. Clients</h2>
+            <p class="page-description">Manage and view all client profiles</p>
+            <ul class="feature-list">
+                <li>List view of all clients with profile cards</li>
+                <li>Client information: Name, Age, Condition</li>
+                <li>Status badges (Active, Review Pending)</li>
+                <li>Last review timestamp</li>
+                <li>View button for each client</li>
+            </ul>
+            <div class="mockup">
+                <div class="mockup-header">Client List</div>
+                <div class="client-card pending">
+                    <strong>Priya Sharma</strong> <span class="badge pending">Review Pending</span>
+                    <div style="margin-top: 8px; color: #aaa; font-size: 14px;">Age: 28 | PCOS | Last review: 2 days ago</div>
+                </div>
+                <div class="client-card">
+                    <strong>Anjali Patel</strong> <span class="badge active">Active</span>
+                    <div style="margin-top: 8px; color: #aaa; font-size: 14px;">Age: 32 | Thyroid | Last review: 1 week ago</div>
+                </div>
+                <div class="client-card">
+                    <strong>Meera Singh</strong> <span class="badge active">Active</span>
+                    <div style="margin-top: 8px; color: #aaa; font-size: 14px;">Age: 26 | PCOS | Last review: 3 days ago</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meal Plans Page -->
+        <div class="page-section">
+            <h2 class="page-title">3. Meal Plans</h2>
+            <p class="page-description">View and review detailed meal plans with quality checks</p>
+            <ul class="feature-list">
+                <li>Client profile summary with health history</li>
+                <li>Detailed meal plan with nutritional information</li>
+                <li>Quality check results panel (right sidebar)</li>
+                <li>Approve/Reject action buttons</li>
+                <li>Notes section for coach feedback</li>
+            </ul>
+            <div class="mockup">
+                <div class="mockup-header">Original Detailed View (Already Implemented)</div>
+                <div class="screenshot-placeholder">
+                    This is the existing detailed meal plan view with:<br>
+                    • Client Summary Card (left)<br>
+                    • Meal Plan Card with all meals (center)<br>
+                    • Quality Check Results (right sidebar)<br>
+                    • Bottom action bar with Approve/Reject buttons
+                </div>
+            </div>
+        </div>
+
+        <!-- Quality Control Page -->
+        <div class="page-section">
+            <h2 class="page-title">4. Quality Control (Rules Check)</h2>
+            <p class="page-description">Configure and manage automated quality check rules</p>
+            <ul class="feature-list">
+                <li>List of all quality check rules with detailed criteria</li>
+                <li>Enable/disable toggles for each rule</li>
+                <li>Statistics showing check performance (Total: 247, Passed: 189, Warnings: 42, Failed: 16)</li>
+                <li>Add Custom Rule functionality</li>
+            </ul>
+            <div class="mockup">
+                <div class="mockup-header">Quality Check Rules</div>
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <div style="display: flex; gap: 15px; align-items: center;">
+                            <div class="rule-number">1</div>
+                            <div>
+                                <div style="font-weight: bold;">Protein Content Check</div>
+                                <div style="font-size: 13px; color: #aaa;">Ensures main meals contain adequate protein</div>
+                            </div>
+                        </div>
+                        <div style="color: #7ed321;">✓ Active</div>
+                    </div>
+                    <div style="color: #aaa; font-size: 14px;">
+                        • Target: 10-14g protein per main meal<br>
+                        • Warning: 8-10g or 14-20g<br>
+                        • Applies to: Breakfast, Lunch, Dinner
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <div style="display: flex; gap: 15px; align-items: center;">
+                            <div class="rule-number">2</div>
+                            <div>
+                                <div style="font-weight: bold;">Portion Size Specification</div>
+                                <div style="font-size: 13px; color: #aaa;">Validates clearly defined portions</div>
+                            </div>
+                        </div>
+                        <div style="color: #7ed321;">✓ Active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div class="page-section">
+            <h2 class="page-title">5. Settings</h2>
+            <p class="page-description">Configure user preferences and account settings</p>
+            <ul class="feature-list">
+                <li>Profile Settings (Personal Information, Change Password)</li>
+                <li>Notification Settings with toggles</li>
+                <li>Appearance settings (Dark Mode, Language)</li>
+                <li>Quality Check Settings configuration</li>
+                <li>About section with version info</li>
+                <li>Sign Out button</li>
+            </ul>
+            <div class="mockup">
+                <div class="mockup-header">Settings Options</div>
+                <div class="setting-card">
+                    <div>
+                        <div style="font-weight: bold;">Push Notifications</div>
+                        <div style="font-size: 13px; color: #aaa;">Receive alerts for client updates</div>
+                    </div>
+                    <div style="color: #7ed321;">ON</div>
+                </div>
+                <div class="setting-card">
+                    <div>
+                        <div style="font-weight: bold;">Email Digest</div>
+                        <div style="font-size: 13px; color: #aaa;">Daily summary of pending reviews</div>
+                    </div>
+                    <div style="color: #7ed321;">ON</div>
+                </div>
+                <div class="setting-card">
+                    <div>
+                        <div style="font-weight: bold;">Dark Mode</div>
+                        <div style="font-size: 13px; color: #aaa;">Use dark theme throughout the app</div>
+                    </div>
+                    <div style="color: #7ed321;">ON</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Page -->
+        <div class="page-section">
+            <h2 class="page-title">6. Notifications</h2>
+            <p class="page-description">View all system notifications and alerts</p>
+            <ul class="feature-list">
+                <li>Grouped by date (Today, Yesterday, This Week)</li>
+                <li>Multiple notification types (Reviews, New Clients, System Updates)</li>
+                <li>Unread indicators</li>
+                <li>Mark all as read functionality</li>
+                <li>Time stamps for each notification</li>
+            </ul>
+            <div class="mockup">
+                <div class="mockup-header">Recent Notifications</div>
+                <div style="margin-bottom: 15px; color: #aaa; font-weight: bold;">Today</div>
+                <div class="notification-card unread">
+                    <div class="notification-icon" style="background: rgba(255, 167, 38, 0.2); color: #ffa726;">📋</div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: bold;">Meal Plan Review Pending <span style="color: #7ed321;">●</span></div>
+                        <div style="font-size: 14px; color: #aaa; margin-top: 4px;">Priya Sharma's meal plan is ready for review</div>
+                        <div style="font-size: 12px; color: #666; margin-top: 6px;">2 hours ago</div>
+                    </div>
+                </div>
+                <div class="notification-card">
+                    <div class="notification-icon" style="background: rgba(126, 211, 33, 0.2); color: #7ed321;">✓</div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: bold;">Review Approved</div>
+                        <div style="font-size: 14px; color: #aaa; margin-top: 4px;">You approved Anjali Patel's meal plan</div>
+                        <div style="font-size: 12px; color: #666; margin-top: 6px;">5 hours ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="page-section" style="background: #2d3a2d; border: 2px solid #7ed321;">
+            <h2 class="page-title">✅ Implementation Complete</h2>
+            <p class="page-description" style="font-size: 18px;">
+                All 6 pages have been successfully implemented with the following files:
+            </p>
+            <ul class="feature-list">
+                <li><strong>overview_dashboard_screen.dart</strong> - Dashboard overview page</li>
+                <li><strong>clients_screen.dart</strong> - Client management page</li>
+                <li><strong>dashboard_screen.dart</strong> - Updated with navigation routing (Meal Plans view)</li>
+                <li><strong>rules_check_screen.dart</strong> - Quality control rules page</li>
+                <li><strong>settings_screen.dart</strong> - Settings and preferences page</li>
+                <li><strong>notifications_screen.dart</strong> - Notifications page</li>
+            </ul>
+            <p style="margin-top: 20px; color: #7ed321; font-size: 16px;">
+                The website is now fully usable with complete navigation between all pages!
+            </p>
+        </div>
+    </div>
+</body>
+</html>

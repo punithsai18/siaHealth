@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIA Health Dashboard - UI Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: #7b2cbf;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .stats-bar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .stat.ok { color: #22c55e; }
+        .stat.warning { color: #f59e0b; }
+        .stat.error { color: #ef4444; }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 30px 0 10px;
+            color: #7b2cbf;
+        }
+        
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .chip {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .chip.purple { background: #f3e8ff; color: #7b2cbf; }
+        .chip.green { background: #dcfce7; color: #16a34a; }
+        
+        .info-box {
+            background: #f0f9ff;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #3b82f6;
+        }
+        
+        .info-row {
+            display: flex;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            min-width: 150px;
+        }
+        
+        .meal-section {
+            margin: 15px 0;
+        }
+        
+        .meal-header {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .meal-header.lunch {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+        
+        .meal-header.dinner {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        
+        .meal-item {
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 3px solid #e5e5e5;
+            margin-left: 10px;
+        }
+        
+        .meal-item-name {
+            font-weight: 600;
+        }
+        
+        .meal-item-portion {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .meal-item-nutrition {
+            text-align: right;
+            font-size: 12px;
+        }
+        
+        .check-card {
+            border-left: 4px solid #22c55e;
+        }
+        
+        .check-card.warning {
+            border-left-color: #f59e0b;
+        }
+        
+        .check-card.error {
+            border-left-color: #ef4444;
+        }
+        
+        .check-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .check-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .status-badge.ok {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        
+        .status-badge.warning {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-badge.error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        
+        .feedback-box {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e5e5e7;
+        }
+        
+        .detail-item {
+            padding: 6px 0;
+            font-size: 13px;
+            color: #555;
+        }
+        
+        .ai-box {
+            background: #faf5ff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9d5ff;
+            margin: 10px 0;
+        }
+        
+        .ai-insight {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .ai-title {
+            font-weight: 600;
+            font-size: 13px;
+            color: #7c3aed;
+        }
+        
+        .ai-content {
+            font-size: 12px;
+            color: #555;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 SIA Health - Quality Dashboard</h1>
+        </div>
+        
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat ok">
+                <div class="stat-icon">✓</div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">OK</div>
+            </div>
+            <div class="stat warning">
+                <div class="stat-icon">⚠</div>
+                <div class="stat-value">1</div>
+                <div class="stat-label">Warning</div>
+            </div>
+            <div class="stat error">
+                <div class="stat-icon">✗</div>
+                <div class="stat-value">0</div>
+                <div class="stat-label">Needs Work</div>
+            </div>
+        </div>
+        
+        <!-- Client Profile -->
+        <div class="section-header">
+            <span>👤</span>
+            <h2>Client Profile</h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 24px;">👤</span>
+                    <span>Priya Sharma</span>
+                </div>
+                <span class="chip purple">28 years</span>
+            </div>
+            
+            <div class="info-row">
+                <span style="color: #dc2626;">🏥</span>
+                <span class="info-label">Condition:</span>
+                <span>PCOS</span>
+            </div>
+            
+            <div class="info-row">
+                <span style="color: #3b82f6;">🎯</span>
+                <span class="info-label">Goals:</span>
+                <span>Weight management, Cycle health, Energy balance</span>
+            </div>
+            
+            <h3 style="margin: 15px 0 10px; font-size: 16px;">Health History</h3>
+            <div class="info-box" style="background: #f3f4f6;">
+                <div class="info-row">
+                    <span class="info-label">Diagnosis:</span>
+                    <span>PCOS (Polycystic Ovary Syndrome)</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Symptoms:</span>
+                    <span>Irregular periods, Insulin resistance, Weight gain</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Medications:</span>
+                    <span>Metformin 500mg</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Dietary Preference:</span>
+                    <span>Vegetarian</span>
+                </div>
+            </div>
+            
+            <h3 style="margin: 15px 0 10px; font-size: 16px;">Health Log Patterns</h3>
+            <div class="info-box" style="background: #fef3c7;">
+                <div class="info-row">
+                    <span class="info-label">Cravings:</span>
+                    <span>High sugar cravings in evening</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Bloating:</span>
+                    <span>Frequent bloating after meals</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Energy:</span>
+                    <span>Low energy in mornings, better after lunch</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Meal Plan -->
+        <div class="section-header">
+            <span>🍽️</span>
+            <h2>Meal Plan</h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 24px;">🍽️</span>
+                    <span>Meal Plan</span>
+                </div>
+                <span class="chip green">2024-01-15</span>
+            </div>
+            
+            <div class="info-box">
+                <strong>ℹ️ Plan Notes:</strong> Low-carb plan for PCOS management, focus on protein and fiber
+            </div>
+            
+            <!-- Breakfast -->
+            <div class="meal-section">
+                <div class="meal-header">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span>🥞</span>
+                        <strong>Breakfast</strong>
+                    </div>
+                    <span style="font-size: 12px;">P: 13.0g | C: 28.5g</span>
+                </div>
+                <div class="meal-item">
+                    <div>
+                        <div class="meal-item-name">Moong dal cheela</div>
+                        <div class="meal-item-portion">2 medium pieces</div>
+                    </div>
+                    <div class="meal-item-nutrition">
+                        <div><strong>12.0g</strong> protein</div>
+                        <div style="color: #666;">200 cal</div>
+                    </div>
+                </div>
+                <div class="meal-item">
+                    <div>
+                        <div class="meal-item-name">Green chutney</div>
+                        <div class="meal-item-portion">2 tbsp</div>
+                    </div>
+                    <div class="meal-item-nutrition">
+                        <div><strong>1.0g</strong> protein</div>
+                        <div style="color: #666;">20 cal</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lunch -->
+            <div class="meal-section">
+                <div class="meal-header lunch">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span>🍱</span>
+                        <strong>Lunch</strong>
+                    </div>
+                    <span style="font-size: 12px;">P: 27.0g | C: 56.0g</span>
+                </div>
+                <div class="meal-item">
+                    <div>
+                        <div class="meal-item-name">Roti</div>
+                        <div class="meal-item-portion">2 medium</div>
+                    </div>
+                    <div class="meal-item-nutrition">
+                        <div><strong>6.0g</strong> protein</div>
+                        <div style="color: #666;">200 cal</div>
+                    </div>
+                </div>
+                <div class="meal-item">
+                    <div>
+                        <div class="meal-item-name">Paneer curry</div>
+                        <div class="meal-item-portion">1 bowl (100g)</div>
+                    </div>
+                    <div class="meal-item-nutrition">
+                        <div><strong>18.0g</strong> protein</div>
+                        <div style="color: #666;">220 cal</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dinner -->
+            <div class="meal-section">
+                <div class="meal-header dinner">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span>🍽️</span>
+                        <strong>Dinner</strong>
+                    </div>
+                    <span style="font-size: 12px;">P: 20.0g | C: 26.0g</span>
+                </div>
+                <div class="meal-item">
+                    <div>
+                        <div class="meal-item-name">Grilled paneer</div>
+                        <div class="meal-item-portion">100g</div>
+                    </div>
+                    <div class="meal-item-nutrition">
+                        <div><strong>14.0g</strong> protein</div>
+                        <div style="color: #666;">170 cal</div>
+                    </div>
+                </div>
+                <div class="meal-item">
+                    <div>
+                        <div class="meal-item-name">Stir-fried vegetables</div>
+                        <div class="meal-item-portion">1 large bowl</div>
+                    </div>
+                    <div class="meal-item-nutrition">
+                        <div><strong>4.0g</strong> protein</div>
+                        <div style="color: #666;">90 cal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quality Checks -->
+        <div class="section-header">
+            <span>✓</span>
+            <h2>Quality Checks</h2>
+        </div>
+        
+        <!-- Check 1: Protein -->
+        <div class="card check-card">
+            <div class="check-header">
+                <div class="check-status">
+                    <span style="font-size: 24px; color: #22c55e;">✓</span>
+                    <strong>Protein Content Check</strong>
+                </div>
+                <span class="status-badge ok">OK</span>
+            </div>
+            <div class="feedback-box">
+                All main meals have optimal protein content (10-14g). Good for satiety and muscle maintenance.
+            </div>
+            <details style="margin-top: 10px;">
+                <summary style="cursor: pointer; padding: 8px; background: #f9fafb; border-radius: 4px;">View Details</summary>
+                <div style="padding: 10px;">
+                    <div class="detail-item">✓ Breakfast: 13.0g protein (optimal)</div>
+                    <div class="detail-item">✓ Lunch: 27.0g protein (combined from items, optimal range)</div>
+                    <div class="detail-item">✓ Dinner: 20.0g protein (optimal)</div>
+                </div>
+            </details>
+        </div>
+        
+        <!-- Check 2: Portion Size -->
+        <div class="card check-card">
+            <div class="check-header">
+                <div class="check-status">
+                    <span style="font-size: 24px; color: #22c55e;">✓</span>
+                    <strong>Portion Size Check</strong>
+                </div>
+                <span class="status-badge ok">OK</span>
+            </div>
+            <div class="feedback-box">
+                All 13 items have clear, specific portion sizes. This ensures accurate tracking and consistency.
+            </div>
+            <details style="margin-top: 10px;">
+                <summary style="cursor: pointer; padding: 8px; background: #f9fafb; border-radius: 4px;">View Details</summary>
+                <div style="padding: 10px;">
+                    <div class="detail-item">✓ Moong dal cheela: '2 medium pieces' (clearly defined)</div>
+                    <div class="detail-item">✓ Almonds: '10 pieces' (clearly defined)</div>
+                    <div class="detail-item">✓ Paneer curry: '1 bowl (100g)' (clearly defined)</div>
+                    <div class="detail-item">✓ All items have specific portions defined</div>
+                </div>
+            </details>
+        </div>
+        
+        <!-- Check 3: Low-Carb -->
+        <div class="card check-card warning">
+            <div class="check-header">
+                <div class="check-status">
+                    <span style="font-size: 24px; color: #f59e0b;">⚠</span>
+                    <strong>Low-Carb Consistency Check</strong>
+                </div>
+                <span class="status-badge warning">Warning</span>
+            </div>
+            <div class="feedback-box">
+                1 meal(s) have moderate carbs. Consider reducing portions if client shows insulin resistance symptoms.
+            </div>
+            <details style="margin-top: 10px;">
+                <summary style="cursor: pointer; padding: 8px; background: #f9fafb; border-radius: 4px;">View Details</summary>
+                <div style="padding: 10px;">
+                    <div class="detail-item">✓ Breakfast: 28.5g carbs (low-carb)</div>
+                    <div class="detail-item">⚠ Lunch: 56.0g carbs (moderate, watch portions)</div>
+                    <div class="detail-item">✓ Dinner: 26.0g carbs (low-carb)</div>
+                </div>
+            </details>
+        </div>
+        
+        <!-- Check 4: Formatting -->
+        <div class="card check-card">
+            <div class="check-header">
+                <div class="check-status">
+                    <span style="font-size: 24px; color: #22c55e;">✓</span>
+                    <strong>Formatting & Quality Check</strong>
+                </div>
+                <span class="status-badge ok">OK</span>
+            </div>
+            <div class="feedback-box">
+                Meal plan is professionally formatted with clear item names and proper structure.
+            </div>
+        </div>
+        
+        <!-- AI Insights -->
+        <div class="section-header">
+            <span>🧠</span>
+            <h2>AI-Assisted Plan Fit (Optional)</h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 24px;">🧠</span>
+                    <span>AI-Powered Plan Analysis</span>
+                </div>
+            </div>
+            
+            <div class="ai-box">
+                <strong>Prompt Logic for AI Analysis:</strong>
+                <p style="font-size: 12px; margin-top: 8px; color: #555;">
+                    This feature would use an AI model (e.g., GPT-4, Claude) to analyze:<br>
+                    1. Client Condition: PCOS management requirements<br>
+                    2. Health Log: Cravings, bloating, energy patterns<br>
+                    3. Meal Plan: Nutritional composition and timing
+                </p>
+                
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9d5ff;">
+                    <strong>Sample AI Output (Simulated):</strong>
+                    
+                    <div class="ai-insight">
+                        <div style="color: #22c55e; font-size: 18px;">✓</div>
+                        <div class="ai-title" style="color: #22c55e;">Plan Alignment</div>
+                        <div class="ai-content">The low-carb approach aligns well with PCOS management. Protein distribution supports blood sugar stability.</div>
+                    </div>
+                    
+                    <div class="ai-insight">
+                        <div style="color: #f59e0b; font-size: 18px;">⚠</div>
+                        <div class="ai-title" style="color: #f59e0b;">Craving Management</div>
+                        <div class="ai-content">Evening sugar cravings noted in health log. Consider adding a small protein-rich snack at 4 PM to prevent evening cravings.</div>
+                    </div>
+                    
+                    <div class="ai-insight">
+                        <div style="color: #3b82f6; font-size: 18px;">✓</div>
+                        <div class="ai-title" style="color: #3b82f6;">Bloating Consideration</div>
+                        <div class="ai-content">Vegetable portions are well-distributed. However, if bloating persists, consider cooking methods (steaming vs. raw) for better tolerance.</div>
+                    </div>
+                </div>
+                
+                <p style="font-size: 11px; font-style: italic; color: #888; margin-top: 15px;">
+                    Note: This is a placeholder. Actual implementation would require API integration with OpenAI, Anthropic, or similar AI service. Output would be interpreted and validated before presentation.
+                </p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0; padding: 20px; background: white; border-radius: 8px;">
+            <button style="background: #7b2cbf; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span>📊</span> View Summary
+            </button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,487 @@
+class FoodItem {
+  final String name;
+  final String category;
+  final String defaultPortion;
+  final double protein;
+  final double carbs;
+  final double fats;
+  final double calories;
+
+  FoodItem({
+    required this.name,
+    required this.category,
+    required this.defaultPortion,
+    required this.protein,
+    required this.carbs,
+    required this.fats,
+    required this.calories,
+  });
+}
+
+class FoodDatabase {
+  static final List<FoodItem> allFoods = [
+    // Breakfast Items
+    FoodItem(
+      name: "Moong dal cheela",
+      category: "Breakfast",
+      defaultPortion: "2 medium pieces",
+      protein: 12.0,
+      carbs: 25.0,
+      fats: 5.0,
+      calories: 200,
+    ),
+    FoodItem(
+      name: "Oats upma",
+      category: "Breakfast",
+      defaultPortion: "1 bowl",
+      protein: 8.0,
+      carbs: 30.0,
+      fats: 6.0,
+      calories: 210,
+    ),
+    FoodItem(
+      name: "Poha",
+      category: "Breakfast",
+      defaultPortion: "1 bowl",
+      protein: 4.0,
+      carbs: 35.0,
+      fats: 7.0,
+      calories: 220,
+    ),
+    FoodItem(
+      name: "Idli",
+      category: "Breakfast",
+      defaultPortion: "3 pieces",
+      protein: 6.0,
+      carbs: 28.0,
+      fats: 2.0,
+      calories: 156,
+    ),
+    FoodItem(
+      name: "Dosa",
+      category: "Breakfast",
+      defaultPortion: "1 medium",
+      protein: 5.0,
+      carbs: 22.0,
+      fats: 4.0,
+      calories: 150,
+    ),
+    FoodItem(
+      name: "Upma",
+      category: "Breakfast",
+      defaultPortion: "1 bowl",
+      protein: 5.0,
+      carbs: 32.0,
+      fats: 5.0,
+      calories: 195,
+    ),
+    FoodItem(
+      name: "Besan chilla",
+      category: "Breakfast",
+      defaultPortion: "2 pieces",
+      protein: 10.0,
+      carbs: 20.0,
+      fats: 6.0,
+      calories: 180,
+    ),
+    FoodItem(
+      name: "Paratha",
+      category: "Breakfast",
+      defaultPortion: "1 medium",
+      protein: 4.0,
+      carbs: 28.0,
+      fats: 8.0,
+      calories: 200,
+    ),
+
+    // Proteins
+    FoodItem(
+      name: "Paneer curry",
+      category: "Main Dish",
+      defaultPortion: "1 bowl (100g)",
+      protein: 18.0,
+      carbs: 8.0,
+      fats: 12.0,
+      calories: 220,
+    ),
+    FoodItem(
+      name: "Grilled paneer",
+      category: "Main Dish",
+      defaultPortion: "100g",
+      protein: 14.0,
+      carbs: 4.0,
+      fats: 10.0,
+      calories: 170,
+    ),
+    FoodItem(
+      name: "Chicken breast grilled",
+      category: "Main Dish",
+      defaultPortion: "100g",
+      protein: 31.0,
+      carbs: 0.0,
+      fats: 3.5,
+      calories: 165,
+    ),
+    FoodItem(
+      name: "Dal tadka",
+      category: "Main Dish",
+      defaultPortion: "1 bowl",
+      protein: 9.0,
+      carbs: 20.0,
+      fats: 5.0,
+      calories: 165,
+    ),
+    FoodItem(
+      name: "Rajma curry",
+      category: "Main Dish",
+      defaultPortion: "1 bowl",
+      protein: 12.0,
+      carbs: 25.0,
+      fats: 4.0,
+      calories: 185,
+    ),
+    FoodItem(
+      name: "Chole curry",
+      category: "Main Dish",
+      defaultPortion: "1 bowl",
+      protein: 11.0,
+      carbs: 27.0,
+      fats: 5.0,
+      calories: 200,
+    ),
+    FoodItem(
+      name: "Egg curry",
+      category: "Main Dish",
+      defaultPortion: "2 eggs",
+      protein: 14.0,
+      carbs: 8.0,
+      fats: 10.0,
+      calories: 180,
+    ),
+    FoodItem(
+      name: "Fish curry",
+      category: "Main Dish",
+      defaultPortion: "100g",
+      protein: 20.0,
+      carbs: 5.0,
+      fats: 8.0,
+      calories: 180,
+    ),
+    FoodItem(
+      name: "Boiled eggs",
+      category: "Protein",
+      defaultPortion: "2 eggs",
+      protein: 12.0,
+      carbs: 1.0,
+      fats: 10.0,
+      calories: 140,
+    ),
+
+    // Vegetables
+    FoodItem(
+      name: "Mixed vegetable salad",
+      category: "Vegetables",
+      defaultPortion: "1 bowl",
+      protein: 3.0,
+      carbs: 8.0,
+      fats: 0.5,
+      calories: 50,
+    ),
+    FoodItem(
+      name: "Stir-fried vegetables",
+      category: "Vegetables",
+      defaultPortion: "1 large bowl",
+      protein: 4.0,
+      carbs: 12.0,
+      fats: 3.0,
+      calories: 90,
+    ),
+    FoodItem(
+      name: "Palak sabzi",
+      category: "Vegetables",
+      defaultPortion: "1 bowl",
+      protein: 5.0,
+      carbs: 7.0,
+      fats: 3.0,
+      calories: 75,
+    ),
+    FoodItem(
+      name: "Bhindi sabzi",
+      category: "Vegetables",
+      defaultPortion: "1 bowl",
+      protein: 2.0,
+      carbs: 9.0,
+      fats: 4.0,
+      calories: 80,
+    ),
+    FoodItem(
+      name: "Aloo gobi",
+      category: "Vegetables",
+      defaultPortion: "1 bowl",
+      protein: 3.0,
+      carbs: 15.0,
+      fats: 5.0,
+      calories: 115,
+    ),
+    FoodItem(
+      name: "Broccoli stir fry",
+      category: "Vegetables",
+      defaultPortion: "1 bowl",
+      protein: 4.0,
+      carbs: 8.0,
+      fats: 2.0,
+      calories: 65,
+    ),
+
+    // Carbs
+    FoodItem(
+      name: "Roti",
+      category: "Carbs",
+      defaultPortion: "2 medium",
+      protein: 6.0,
+      carbs: 40.0,
+      fats: 2.0,
+      calories: 200,
+    ),
+    FoodItem(
+      name: "Brown rice",
+      category: "Carbs",
+      defaultPortion: "1 bowl",
+      protein: 5.0,
+      carbs: 45.0,
+      fats: 2.0,
+      calories: 215,
+    ),
+    FoodItem(
+      name: "White rice",
+      category: "Carbs",
+      defaultPortion: "1 bowl",
+      protein: 4.0,
+      carbs: 50.0,
+      fats: 1.0,
+      calories: 220,
+    ),
+    FoodItem(
+      name: "Quinoa",
+      category: "Carbs",
+      defaultPortion: "1 bowl",
+      protein: 8.0,
+      carbs: 39.0,
+      fats: 4.0,
+      calories: 222,
+    ),
+    FoodItem(
+      name: "Whole wheat bread",
+      category: "Carbs",
+      defaultPortion: "2 slices",
+      protein: 8.0,
+      carbs: 30.0,
+      fats: 3.0,
+      calories: 180,
+    ),
+
+    // Snacks
+    FoodItem(
+      name: "Handful of almonds",
+      category: "Snacks",
+      defaultPortion: "10 pieces",
+      protein: 6.0,
+      carbs: 6.0,
+      fats: 14.0,
+      calories: 170,
+    ),
+    FoodItem(
+      name: "Walnuts",
+      category: "Snacks",
+      defaultPortion: "8 pieces",
+      protein: 4.0,
+      carbs: 4.0,
+      fats: 16.0,
+      calories: 180,
+    ),
+    FoodItem(
+      name: "Sprouts chaat",
+      category: "Snacks",
+      defaultPortion: "1 small bowl",
+      protein: 7.0,
+      carbs: 15.0,
+      fats: 2.0,
+      calories: 110,
+    ),
+    FoodItem(
+      name: "Roasted makhana",
+      category: "Snacks",
+      defaultPortion: "1 bowl",
+      protein: 5.0,
+      carbs: 18.0,
+      fats: 1.0,
+      calories: 100,
+    ),
+    FoodItem(
+      name: "Cucumber slices",
+      category: "Snacks",
+      defaultPortion: "1 bowl",
+      protein: 1.0,
+      carbs: 4.0,
+      fats: 0.0,
+      calories: 20,
+    ),
+    FoodItem(
+      name: "Apple",
+      category: "Snacks",
+      defaultPortion: "1 medium",
+      protein: 0.5,
+      carbs: 25.0,
+      fats: 0.3,
+      calories: 95,
+    ),
+    FoodItem(
+      name: "Banana",
+      category: "Snacks",
+      defaultPortion: "1 medium",
+      protein: 1.3,
+      carbs: 27.0,
+      fats: 0.4,
+      calories: 105,
+    ),
+    FoodItem(
+      name: "Greek yogurt",
+      category: "Snacks",
+      defaultPortion: "1 bowl",
+      protein: 10.0,
+      carbs: 8.0,
+      fats: 5.0,
+      calories: 120,
+    ),
+    FoodItem(
+      name: "Peanut butter",
+      category: "Snacks",
+      defaultPortion: "2 tbsp",
+      protein: 8.0,
+      carbs: 7.0,
+      fats: 16.0,
+      calories: 190,
+    ),
+    FoodItem(
+      name: "Protein bar",
+      category: "Snacks",
+      defaultPortion: "1 bar",
+      protein: 20.0,
+      carbs: 25.0,
+      fats: 8.0,
+      calories: 250,
+    ),
+
+    // Soups
+    FoodItem(
+      name: "Tomato soup",
+      category: "Soup",
+      defaultPortion: "1 bowl",
+      protein: 2.0,
+      carbs: 10.0,
+      fats: 1.0,
+      calories: 60,
+    ),
+    FoodItem(
+      name: "Sweet corn soup",
+      category: "Soup",
+      defaultPortion: "1 bowl",
+      protein: 3.0,
+      carbs: 15.0,
+      fats: 2.0,
+      calories: 90,
+    ),
+    FoodItem(
+      name: "Clear vegetable soup",
+      category: "Soup",
+      defaultPortion: "1 bowl",
+      protein: 2.0,
+      carbs: 8.0,
+      fats: 1.0,
+      calories: 50,
+    ),
+    FoodItem(
+      name: "Dal soup",
+      category: "Soup",
+      defaultPortion: "1 bowl",
+      protein: 6.0,
+      carbs: 12.0,
+      fats: 2.0,
+      calories: 90,
+    ),
+
+    // Condiments
+    FoodItem(
+      name: "Green chutney",
+      category: "Condiment",
+      defaultPortion: "2 tbsp",
+      protein: 1.0,
+      carbs: 3.0,
+      fats: 0.5,
+      calories: 20,
+    ),
+    FoodItem(
+      name: "Coconut chutney",
+      category: "Condiment",
+      defaultPortion: "2 tbsp",
+      protein: 1.0,
+      carbs: 4.0,
+      fats: 3.0,
+      calories: 45,
+    ),
+    FoodItem(
+      name: "Raita",
+      category: "Condiment",
+      defaultPortion: "1 small bowl",
+      protein: 3.0,
+      carbs: 6.0,
+      fats: 2.0,
+      calories: 55,
+    ),
+
+    // Drinks
+    FoodItem(
+      name: "Buttermilk",
+      category: "Beverage",
+      defaultPortion: "1 glass",
+      protein: 3.0,
+      carbs: 5.0,
+      fats: 2.0,
+      calories: 50,
+    ),
+    FoodItem(
+      name: "Green tea",
+      category: "Beverage",
+      defaultPortion: "1 cup",
+      protein: 0.0,
+      carbs: 0.0,
+      fats: 0.0,
+      calories: 2,
+    ),
+    FoodItem(
+      name: "Lemon water",
+      category: "Beverage",
+      defaultPortion: "1 glass",
+      protein: 0.0,
+      carbs: 2.0,
+      fats: 0.0,
+      calories: 8,
+    ),
+  ];
+
+  static List<FoodItem> searchFoods(String query) {
+    if (query.isEmpty) {
+      return allFoods;
+    }
+    
+    final lowerQuery = query.toLowerCase();
+    return allFoods.where((food) {
+      return food.name.toLowerCase().contains(lowerQuery) ||
+          food.category.toLowerCase().contains(lowerQuery);
+    }).toList();
+  }
+
+  static List<String> getAllCategories() {
+    return allFoods.map((food) => food.category).toSet().toList()..sort();
+  }
+}

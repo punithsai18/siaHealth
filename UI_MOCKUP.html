@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIA Health - Coach Portal UI Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #1a1f1a;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 240px;
+            background: #151815;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #7ed321;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .logo-text h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .logo-text p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
+        .nav-items {
+            margin-top: 24px;
+        }
+        .nav-item {
+            margin: 4px 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            color: rgba(255,255,255,0.4);
+        }
+        .nav-item.active {
+            background: #2d3a2d;
+            color: #fff;
+        }
+        .nav-item.active .nav-icon {
+            color: #7ed321;
+        }
+        .nav-icon {
+            font-size: 22px;
+        }
+        .coach-profile {
+            margin: 16px;
+            padding: 12px;
+            background: #232823;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+        }
+        .coach-avatar {
+            width: 40px;
+            height: 40px;
+            background: #7ed321;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .top-bar {
+            height: 70px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid #2d3a2d;
+        }
+        .search-bar {
+            flex: 1;
+            height: 45px;
+            background: #232823;
+            border-radius: 8px;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .search-bar input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+        }
+        .search-bar input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        .review-badge {
+            padding: 8px 12px;
+            background: #ffa726;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        .notification-btn {
+            width: 40px;
+            height: 40px;
+            background: #232823;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .content-area {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+        .left-content {
+            flex: 2;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        .client-card {
+            background: #232823;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .client-avatar {
+            width: 100px;
+            height: 100px;
+            background: #7ed321;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .client-info h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .client-details {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .client-details span {
+            color: rgba(255,255,255,0.4);
+        }
+        .phase-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #2d4a2d;
+            color: #7ed321;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .client-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .tag {
+            padding: 6px 12px;
+            background: #2d3a2d;
+            border: 1px solid #3d4a3d;
+            border-radius: 4px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+        .client-stats {
+            margin-left: auto;
+            text-align: right;
+        }
+        .calorie-number {
+            font-size: 48px;
+            font-weight: bold;
+        }
+        .calorie-label {
+            color: rgba(255,255,255,0.4);
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .macro-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+        .macro-bar {
+            width: 60px;
+            height: 6px;
+            background: rgba(126, 211, 33, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .macro-fill {
+            height: 100%;
+            background: #7ed321;
+            width: 80%;
+        }
+        .meal-plan-section h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .meal-plan-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .date-badge {
+            padding: 6px 12px;
+            background: #232823;
+            border-radius: 6px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+        .edit-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid #7ed321;
+            color: #7ed321;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .day-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .day-card {
+            background: #232823;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .day-card h4 {
+            font-size: 16px;
+        }
+        .day-info {
+            color: #7ed321;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .day-card.warning .day-info {
+            color: #ffa726;
+        }
+        .meal-item {
+            margin-bottom: 12px;
+        }
+        .meal-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .meal-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .meal-icon {
+            width: 40px;
+            height: 40px;
+            background: #2d3a2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7ed321;
+        }
+        .snack-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+        .snack-dot {
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+        .right-sidebar {
+            width: 400px;
+            background: #1a1f1a;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        .qc-header h3 {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .qc-subtitle {
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+        .qc-section {
+            background: #232823;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .qc-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .qc-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .qc-status {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .qc-status.passing {
+            background: rgba(126, 211, 33, 0.2);
+            color: #7ed321;
+        }
+        .qc-status.generated {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .check-icon {
+            font-size: 18px;
+        }
+        .check-icon.pass {
+            color: #7ed321;
+        }
+        .check-icon.warn {
+            color: #ffa726;
+        }
+        .check-label {
+            flex: 1;
+            font-size: 14px;
+        }
+        .check-value {
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+        }
+        .ai-content {
+            background: #1a1f1a;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .ai-quote {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .ai-insight {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+        .ai-dot {
+            width: 6px;
+            height: 6px;
+            background: #a855f7;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+        .bottom-bar {
+            height: 80px;
+            padding: 0 24px;
+            background: #151815;
+            border-top: 1px solid #2d3a2d;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .notes-input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+        }
+        .notes-input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        .reject-btn {
+            padding: 16px 24px;
+            background: transparent;
+            border: 1px solid #f44336;
+            color: #f44336;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .approve-btn {
+            padding: 16px 32px;
+            background: #7ed321;
+            border: none;
+            color: #000;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🌿</div>
+                <div class="logo-text">
+                    <h3>SIA Health</h3>
+                    <p>Coach Portal</p>
+                </div>
+            </div>
+            <div class="nav-items">
+                <div class="nav-item">
+                    <div class="nav-icon">📊</div>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">👥</div>
+                    <span>Clients</span>
+                </div>
+                <div class="nav-item active">
+                    <div class="nav-icon">🍽️</div>
+                    <span>Meal Plans</span>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">✓</div>
+                    <span>Quality Control</span>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">⚙️</div>
+                    <span>Settings</span>
+                </div>
+            </div>
+            <div class="coach-profile">
+                <div class="coach-avatar">👤</div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 600;">Dr. Emily R.</div>
+                    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">Senior Nutritionist</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Search client by name or ID...">
+                </div>
+                <div class="review-badge">
+                    <div class="badge-dot"></div>
+                    <span>Review Pending</span>
+                </div>
+                <div class="notification-btn">🔔</div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Left Content -->
+                <div class="left-content">
+                    <!-- Client Card -->
+                    <div class="client-card">
+                        <div class="client-avatar">SJ</div>
+                        <div class="client-info">
+                            <h2>Sarah Jenkins</h2>
+                            <div class="client-details">
+                                <span>ID:</span> #83920
+                                &nbsp;&nbsp;&nbsp;
+                                <span>Age:</span> 29
+                                &nbsp;&nbsp;&nbsp;
+                                <span class="phase-badge">Follicular Phase</span>
+                            </div>
+                            <div class="client-tags">
+                                <span class="tag">PCOS Management</span>
+                                <span class="tag">Dairy-Free</span>
+                                <span class="tag">Low-Glycemic</span>
+                            </div>
+                        </div>
+                        <div class="client-stats">
+                            <div class="calorie-number">1800</div>
+                            <div class="calorie-label">KCAL TARGET</div>
+                            <div class="macro-row">
+                                <span style="color: rgba(255,255,255,0.7);">Protein</span>
+                                <div class="macro-bar">
+                                    <div class="macro-fill"></div>
+                                </div>
+                                <span style="font-weight: 600;">120g</span>
+                            </div>
+                            <div class="macro-row">
+                                <span style="color: rgba(255,255,255,0.7);">Carbs</span>
+                                <div class="macro-bar">
+                                    <div class="macro-fill" style="background: #5a9ad5;"></div>
+                                </div>
+                                <span style="font-weight: 600;">150g</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Meal Plan Section -->
+                    <div class="meal-plan-section">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3>Weekly Meal Plan</h3>
+                            <div class="meal-plan-header">
+                                <span class="date-badge">📅 Oct 23 - Oct 29</span>
+                                <button class="edit-btn">✏️ Edit Plan</button>
+                            </div>
+                        </div>
+                        <div class="day-cards">
+                            <!-- Monday Card -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <h4>Monday</h4>
+                                </div>
+                                <div class="day-info">1780 kcal</div>
+                                <div class="meal-item">
+                                    <div class="meal-label">BREAKFAST</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🥑</div>
+                                        <span>Avocado Toast</span>
+                                    </div>
+                                </div>
+                                <div class="meal-item">
+                                    <div class="meal-label">LUNCH</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🐟</div>
+                                        <span>Grilled Salmon Salad</span>
+                                    </div>
+                                </div>
+                                <div class="meal-item">
+                                    <div class="meal-label">DINNER</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🍗</div>
+                                        <span>Chicken Quinoa Bowl</span>
+                                    </div>
+                                </div>
+                                <div class="snack-item">
+                                    <span class="snack-dot"></span>
+                                    <span>Almonds & Apple Slices</span>
+                                </div>
+                                <div class="snack-item">
+                                    <span class="snack-dot"></span>
+                                    <span>Greek Yogurt Cup</span>
+                                </div>
+                            </div>
+
+                            <!-- Tuesday Card -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <h4>Tuesday</h4>
+                                </div>
+                                <div class="day-info">1810 kcal</div>
+                                <div class="meal-item">
+                                    <div class="meal-label">BREAKFAST</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🥣</div>
+                                        <span>Berry Protein Oatmeal</span>
+                                    </div>
+                                </div>
+                                <div class="meal-item">
+                                    <div class="meal-label">LUNCH</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🦃</div>
+                                        <span>Turkey & Hummus Wrap</span>
+                                    </div>
+                                </div>
+                                <div class="meal-item">
+                                    <div class="meal-label">DINNER</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🥘</div>
+                                        <span>Tofu Veggie Stir-fry</span>
+                                    </div>
+                                </div>
+                                <div class="snack-item">
+                                    <span class="snack-dot"></span>
+                                    <span>Greek Yogurt Cup</span>
+                                </div>
+                                <div class="snack-item">
+                                    <span class="snack-dot"></span>
+                                    <span>Boiled Egg</span>
+                                </div>
+                            </div>
+
+                            <!-- Wednesday Card (with warning) -->
+                            <div class="day-card warning">
+                                <div class="day-header">
+                                    <h4>Wednesday</h4>
+                                    <span style="color: #ffa726;">⚠️</span>
+                                </div>
+                                <div class="day-info">Low Fiber</div>
+                                <div class="meal-item">
+                                    <div class="meal-label">BREAKFAST</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🥤</div>
+                                        <span>Green Power Smoothie</span>
+                                    </div>
+                                </div>
+                                <div class="meal-item">
+                                    <div class="meal-label">LUNCH</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🥗</div>
+                                        <span>Chicken Caesar Salad</span>
+                                    </div>
+                                </div>
+                                <div class="meal-item">
+                                    <div class="meal-label">DINNER</div>
+                                    <div class="meal-content">
+                                        <div class="meal-icon">🥩</div>
+                                        <span>Lean Steak & Asparagus</span>
+                                    </div>
+                                </div>
+                                <div class="snack-item">
+                                    <span class="snack-dot"></span>
+                                    <span>Boiled Egg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar (Quality Control) -->
+                <div class="right-sidebar">
+                    <div class="qc-header">
+                        <h3>Quality Control Hub</h3>
+                        <div class="qc-subtitle">Automated safety & optimization checks</div>
+                    </div>
+
+                    <!-- QC 1: Rules Check -->
+                    <div class="qc-section">
+                        <div class="qc-section-header">
+                            <div class="qc-title">
+                                <span>✓</span>
+                                <span>QC 1: RULES CHECK</span>
+                            </div>
+                            <div class="qc-status passing">PASSING</div>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon pass">✓</span>
+                            <span class="check-label">Calorie Target (±100)</span>
+                            <span class="check-value">1780 avg</span>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon pass">✓</span>
+                            <span class="check-label">Allergen Safety</span>
+                            <span class="check-value">Safe</span>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon warn">⚠</span>
+                            <span class="check-label">Daily Fiber Intake</span>
+                            <span class="check-value">Low (Wed)</span>
+                        </div>
+                    </div>
+
+                    <!-- QC 2: AI Analysis -->
+                    <div class="qc-section">
+                        <div class="qc-section-header">
+                            <div class="qc-title">
+                                <span>🧠</span>
+                                <span>QC 2: AI ANALYSIS</span>
+                            </div>
+                            <div class="qc-status generated">GENERATED</div>
+                        </div>
+                        <div class="ai-content">
+                            <div class="ai-quote">
+                                "The meal plan aligns well with Sarah's PCOS management goals. The distribution of low-glycemic carbs is optimal."
+                            </div>
+                            <div class="ai-insight">
+                                <div class="ai-dot"></div>
+                                <span>Consider adding chia seeds to the Tuesday Oatmeal to boost fiber without spiking insulin.</span>
+                            </div>
+                            <div class="ai-insight">
+                                <div class="ai-dot"></div>
+                                <span>Dinner on Wednesday is slightly low on healthy fats for hormone synthesis.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Action Bar -->
+            <div class="bottom-bar">
+                <input type="text" class="notes-input" placeholder="Add notes for the client...">
+                <div class="action-buttons">
+                    <button class="reject-btn">Reject</button>
+                    <button class="approve-btn">
+                        <span>✓</span>
+                        <span>Approve & Send</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

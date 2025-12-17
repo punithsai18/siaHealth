@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIA Health - Responsive Design Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a1f1a 0%, #0d120d 100%);
+            color: #fff;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #7ed321;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #aaa;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #7ed321;
+            border-bottom: 2px solid #2d3a2d;
+            padding-bottom: 10px;
+        }
+        
+        .device-preview {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .device {
+            background: #232823;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .device-header {
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #7ed321;
+        }
+        
+        .device-size {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        .mobile-preview {
+            width: 375px;
+        }
+        
+        .tablet-preview {
+            width: 768px;
+        }
+        
+        .desktop-preview {
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .screen {
+            background: #1a1f1a;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #2d3a2d;
+        }
+        
+        .mobile-screen {
+            height: 667px;
+        }
+        
+        .tablet-screen {
+            height: 500px;
+        }
+        
+        .desktop-screen {
+            height: 600px;
+        }
+        
+        .screen-content {
+            padding: 20px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        
+        .layout-grid {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .grid-1 { grid-template-columns: 1fr; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        .card {
+            background: #232823;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2d3a2d;
+        }
+        
+        .card-title {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .card-content {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        
+        .sidebar {
+            background: #151815;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .nav-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #232823;
+            border-radius: 8px;
+            color: #aaa;
+        }
+        
+        .nav-item.active {
+            background: #2d3a2d;
+            color: #7ed321;
+        }
+        
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background: #151815;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .bottom-nav-item {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.8em;
+        }
+        
+        .bottom-nav-item.active {
+            color: #7ed321;
+        }
+        
+        .top-bar {
+            background: #151815;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-bar {
+            flex: 1;
+            background: #232823;
+            padding: 10px;
+            border-radius: 6px;
+            color: #aaa;
+        }
+        
+        .feature-list {
+            background: #232823;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #2d3a2d;
+        }
+        
+        .feature-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #1a1f1a;
+            border-radius: 8px;
+            border-left: 4px solid #7ed321;
+        }
+        
+        .feature-title {
+            font-weight: bold;
+            color: #7ed321;
+            margin-bottom: 5px;
+        }
+        
+        .feature-desc {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #7ed321;
+            color: #000;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 SIA Health - Responsive Design</h1>
+        <p class="subtitle">Mobile, Tablet & Desktop Layouts</p>
+        
+        <!-- Mobile Section -->
+        <div class="section">
+            <h2 class="section-title">📱 Mobile Layout (< 600px)</h2>
+            <div class="device-preview">
+                <div class="device mobile-preview">
+                    <div class="device-header">iPhone 12 Pro</div>
+                    <div class="device-size">390 x 844</div>
+                    <div class="screen mobile-screen">
+                        <div class="screen-content">
+                            <div class="top-bar">
+                                <div style="color: #7ed321;">☰</div>
+                                <div class="search-bar">Search...</div>
+                                <div style="color: #ffa726;">●</div>
+                                <div style="color: #aaa;">🔔</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <h3 style="margin-bottom: 10px;">Dashboard</h3>
+                                <p style="color: #aaa; font-size: 0.9em;">Overview of your clients</p>
+                            </div>
+                            
+                            <div class="layout-grid grid-1">
+                                <div class="card">
+                                    <div class="card-title">Total Clients <span class="badge">24</span></div>
+                                    <div class="card-content">+3 this month</div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-title">Pending Reviews <span class="badge">7</span></div>
+                                    <div class="card-content">2 urgent</div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-title">Approved Today <span class="badge">12</span></div>
+                                    <div class="card-content">+4 from yesterday</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bottom-nav">
+                                <div class="bottom-nav-item active">
+                                    <div>📊</div>
+                                    <div>Dashboard</div>
+                                </div>
+                                <div class="bottom-nav-item">
+                                    <div>👥</div>
+                                    <div>Clients</div>
+                                </div>
+                                <div class="bottom-nav-item">
+                                    <div>🍽️</div>
+                                    <div>Meals</div>
+                                </div>
+                                <div class="bottom-nav-item">
+                                    <div>✓</div>
+                                    <div>Quality</div>
+                                </div>
+                                <div class="bottom-nav-item">
+                                    <div>⚙️</div>
+                                    <div>Settings</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-title">✓ Drawer Navigation</div>
+                    <div class="feature-desc">Hamburger menu opens a drawer with full navigation</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ Bottom Navigation Bar</div>
+                    <div class="feature-desc">5 main sections accessible via bottom nav</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ Single Column Layout</div>
+                    <div class="feature-desc">All content stacks vertically for easy scrolling</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ Compact Cards</div>
+                    <div class="feature-desc">Client cards and stats optimized for small screens</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ Expandable Sections</div>
+                    <div class="feature-desc">Quality checks expand on tap to save space</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tablet Section -->
+        <div class="section">
+            <h2 class="section-title">📱 Tablet Layout (600px - 1200px)</h2>
+            <div class="device-preview">
+                <div class="device tablet-preview">
+                    <div class="device-header">iPad</div>
+                    <div class="device-size">768 x 1024</div>
+                    <div class="screen tablet-screen">
+                        <div class="screen-content" style="display: flex; gap: 20px;">
+                            <div class="sidebar" style="width: 200px;">
+                                <div style="color: #7ed321; font-weight: bold; margin-bottom: 20px;">🌿 SIA</div>
+                                <div class="nav-item active">📊 Dashboard</div>
+                                <div class="nav-item">👥 Clients</div>
+                                <div class="nav-item">🍽️ Meals</div>
+                                <div class="nav-item">✓ Quality</div>
+                                <div class="nav-item">⚙️ Settings</div>
+                            </div>
+                            
+                            <div style="flex: 1;">
+                                <div class="top-bar">
+                                    <div class="search-bar">Search client by name or ID...</div>
+                                    <div style="color: #ffa726;">●</div>
+                                    <div style="color: #aaa;">🔔</div>
+                                </div>
+                                
+                                <div style="margin-bottom: 20px;">
+                                    <h3 style="margin-bottom: 10px;">Dashboard</h3>
+                                </div>
+                                
+                                <div class="layout-grid grid-2">
+                                    <div class="card">
+                                        <div class="card-title">Total Clients</div>
+                                        <div style="font-size: 2em; font-weight: bold; color: #7ed321;">24</div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-title">Pending Reviews</div>
+                                        <div style="font-size: 2em; font-weight: bold; color: #ffa726;">7</div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-title">Approved Today</div>
+                                        <div style="font-size: 2em; font-weight: bold; color: #42a5f5;">12</div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-title">Quality Score</div>
+                                        <div style="font-size: 2em; font-weight: bold; color: #7ed321;">94%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-title">✓ Compact Sidebar (200px)</div>
+                    <div class="feature-desc">Narrower sidebar to maximize content space</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ 2-Column Grid</div>
+                    <div class="feature-desc">Stats and meal plans in 2-column layout</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ Adjusted Quality Panel</div>
+                    <div class="feature-desc">Quality control sidebar reduced to 320px</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ Optimized Spacing</div>
+                    <div class="feature-desc">20px padding for balanced layout</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Desktop Section -->
+        <div class="section">
+            <h2 class="section-title">🖥️ Desktop Layout (> 1200px)</h2>
+            <div class="device-preview">
+                <div class="device desktop-preview">
+                    <div class="device-header">Desktop</div>
+                    <div class="device-size">1440 x 900</div>
+                    <div class="screen desktop-screen">
+                        <div class="screen-content" style="display: flex; gap: 20px;">
+                            <div class="sidebar" style="width: 240px;">
+                                <div style="color: #7ed321; font-weight: bold; margin-bottom: 20px;">🌿 SIA Health</div>
+                                <div style="color: #888; font-size: 0.9em; margin-bottom: 30px;">Coach Portal</div>
+                                <div class="nav-item active">📊 Dashboard</div>
+                                <div class="nav-item">👥 Clients</div>
+                                <div class="nav-item">🍽️ Meal Plans</div>
+                                <div class="nav-item">✓ Quality Control</div>
+                                <div class="nav-item">⚙️ Settings</div>
+                            </div>
+                            
+                            <div style="flex: 1;">
+                                <div class="top-bar">
+                                    <div class="search-bar">Search client by name or ID...</div>
+                                    <div style="padding: 8px 12px; background: rgba(126,211,33,0.2); border: 1px solid #7ed321; border-radius: 6px; color: #7ed321; font-size: 0.8em;">👤 Health Coach</div>
+                                    <div style="padding: 8px 12px; background: #ffa726; border-radius: 6px; color: #fff; font-size: 0.8em;">● Review Pending</div>
+                                    <div style="color: #aaa;">🔔</div>
+                                </div>
+                                
+                                <div style="margin-bottom: 20px;">
+                                    <h2 style="margin-bottom: 10px;">Dashboard</h2>
+                                    <p style="color: #aaa;">Overview of your clients and recent activities</p>
+                                </div>
+                                
+                                <div class="layout-grid grid-4">
+                                    <div class="card">
+                                        <div class="card-title">Total Clients</div>
+                                        <div style="font-size: 2.5em; font-weight: bold; color: #7ed321; margin: 10px 0;">24</div>
+                                        <div style="color: #888; font-size: 0.9em;">+3 this month</div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-title">Pending Reviews</div>
+                                        <div style="font-size: 2.5em; font-weight: bold; color: #ffa726; margin: 10px 0;">7</div>
+                                        <div style="color: #888; font-size: 0.9em;">2 urgent</div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-title">Approved Today</div>
+                                        <div style="font-size: 2.5em; font-weight: bold; color: #42a5f5; margin: 10px 0;">12</div>
+                                        <div style="color: #888; font-size: 0.9em;">+4 from yesterday</div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-title">Quality Score</div>
+                                        <div style="font-size: 2.5em; font-weight: bold; color: #7ed321; margin: 10px 0;">94%</div>
+                                        <div style="color: #888; font-size: 0.9em;">+2% this week</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-title">✓ Full Sidebar (240px)</div>
+                    <div class="feature-desc">Complete navigation with labels and user profile</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ 4-Column Stats Grid</div>
+                    <div class="feature-desc">All stats visible in a single row</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ 3-Column Meal Plans</div>
+                    <div class="feature-desc">Three days visible side-by-side</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ Full Quality Panel (400px)</div>
+                    <div class="feature-desc">Complete quality control sidebar with all checks</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">✓ Action Bar</div>
+                    <div class="feature-desc">Bottom action bar for meal plan approval</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Key Features Summary -->
+        <div class="section">
+            <h2 class="section-title">🎯 Key Responsive Features</h2>
+            <div class="layout-grid grid-3">
+                <div class="card">
+                    <div class="card-title">📐 Flexible Layouts</div>
+                    <div class="card-content">
+                        Grids automatically adjust from 1 column (mobile) to 2 (tablet) to 3-4 columns (desktop)
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🎨 Adaptive UI</div>
+                    <div class="card-content">
+                        Components resize and reflow based on available screen space
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🎯 Touch-Friendly</div>
+                    <div class="card-content">
+                        Mobile buttons are full-width with adequate touch targets
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">📱 Native Navigation</div>
+                    <div class="card-content">
+                        Bottom nav on mobile, sidebar on tablet/desktop
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">⚡ Performance</div>
+                    <div class="card-content">
+                        Efficient rendering with conditional layouts
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">♿ Accessible</div>
+                    <div class="card-content">
+                        Readable text sizes and proper contrast ratios
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 60px; padding: 40px; background: #232823; border-radius: 12px;">
+            <h3 style="color: #7ed321; margin-bottom: 15px;">✅ Responsive Design Complete</h3>
+            <p style="color: #aaa;">All screens are now optimized for mobile, tablet, and desktop devices</p>
+        </div>
+    </div>
+</body>
+</html>
